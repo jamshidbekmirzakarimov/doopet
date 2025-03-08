@@ -44,6 +44,14 @@
     <div class="container">
       <div id="top-links" class="nav pull-right">
         <ul class="list-inline">
+          <li>
+            <i class="fa fa-location-arrow"></i>
+            <span> {{address}}</span>
+          </li>
+          <li>
+           <a href="mailto:{{email}}"> <i class="fa fa-envelope"></i>
+            <span>{{email}}</span></a>
+          </li>
           <li><a href="{{ contact }}"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md">{{
               telephone }}</span></li>
           <li class="dropdown"><a href="{{ account }}" title="{{ text_account }}" class="dropdown-toggle"

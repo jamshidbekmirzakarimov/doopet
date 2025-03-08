@@ -44,6 +44,9 @@ a {
 a:hover {
   text-decoration: none;
 }
+a:focus {
+  text-decoration: none;
+}
 legend {
   font-size: 18px;
   padding: 7px 0px;
@@ -78,4 +81,12 @@ label {
 	font-size: 18px;
 	margin-right: 8px;
 }
+.caret{
+	border-top: 6px dashed;
+	border-top: 6px solid \9;
+	border-right: 6px solid transparent;
+	border-left: 6px solid transparent;
+}
+
+
 /*! Header end */
