@@ -1,3 +1,6 @@
+:root{
+	--accent: #1D3971;
+}
 body {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
@@ -66,11 +69,17 @@ label {
 .list-inline {
   margin-bottom: 0;
 }
+
 .list-inline li {
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   color: #323030;
+  padding: 0;
+}
+
+.list-inline li:nth-last-child(n+2){
+	margin-right: 45px;
 }
 
 .list-inline li a{
@@ -88,5 +97,31 @@ label {
 	border-left: 6px solid transparent;
 }
 
+
+
+.header-center{
+	background-color: var(--accent);
+	padding: 15px 0;
+}
+#logo img{
+	max-width: 125px;
+}
+.header-menu{
+	display: flex;
+	justify-content: flex-end;
+	margin: 7px 0 0 0;
+	padding: 0;
+	list-style: none;
+	column-gap: 42px;
+}
+
+.header-menu li a{
+	color: #fff;
+	font-size: 16px;
+}
+.header-menu li a:hover{
+	opacity: 0.7;
+	transition: opacity 0.5s;
+}
 
 /*! Header end */
