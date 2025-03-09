@@ -272,6 +272,34 @@ label {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
+header .live-search{
+	margin-top: 55px;
+	border-radius: 5px;
+	padding-bottom: 44px;
+}
+
+header .live-search ul li .product-name{
+	color: var(--accent);
+	margin-top: 9px;
+}
+header .live-search ul li .product-name p{
+	display: none;
+}
+
+header .live-search ul li .product-add-cart a{
+	background-color: var(--accent);
+	border: none;
+}
+header .live-search .result-text{
+	padding: 15px;
+	background-color: #f1f1f1;
+}
+
+header .live-search .result-text a{
+	color: var(--accent);
+	font-size: 12px;
+}
+
 #cart button{
 	background-color: var(--accent);
 	height: 55px;
@@ -283,6 +311,7 @@ label {
 	justify-content: center;
 	column-gap: 10px;
 }
+
 
 
 /*! Header end */
