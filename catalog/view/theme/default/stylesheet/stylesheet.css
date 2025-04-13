@@ -885,3 +885,211 @@ html[dir="rtl"] #cart .dropdown-menu {
     float: right;
   }
 }
+
+
+
+/* Product start */
+.alert {
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+  z-index: 999;
+}
+.xdstickers_wrapper.position_upleft {
+  top: 15px !important;
+  left: 30px !important;
+}
+.xdstickers_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.xdstickers_wrapper .xdstickers {
+  display: flex;
+  border-radius: 3px;
+  padding: 4px 15px;
+  font-weight: 400;
+  text-align: center;
+}
+.product-layout {
+  margin-bottom: 30px;
+}
+.product-thumb {
+  border-radius: 5px;
+  border: 1px solid #d8d7d7;
+  background-color: #fff;
+}
+.product-thumb .image {
+  text-align: center;
+  border-radius: 4px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  position: relative;
+}
+.product-thumb .image img {
+  margin: 0 auto;
+}
+
+.caption-thumb .caption {
+  padding: 20px;
+}
+.product-thumb .caption h4 a {
+  font-size: 16px;
+  font-weight: 400;
+  color: #323030;
+  line-height: 1.5;
+}
+
+.product-thumb .price-new {
+  font-size: 18px;
+  font-weight: 700;
+  margin-right: 14px;
+}
+
+.product-thumb .price-old {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  text-decoration: line-through;
+  color: #9e9a9a;
+}
+
+.product-thumb .product-footer {
+  padding: 0 20px 20px 20px;
+}
+
+.product-wishlist-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+.product-wishlist-btn i {
+  font-size: 22px;
+}
+
+.product-footer .product-cart-add {
+  background-color: var(--accent);
+  padding: 12px;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  transition: background-color 0.5s ease;
+}
+
+.product-footer .product-cart-add:hover {
+  background-color: var(--accent-hover);
+}
+
+.product-quant {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 6px;
+  margin-bottom: 12px;
+}
+
+.quant-btn {
+  background-color: #efefef;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 35px;
+  font-size: 32px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.quant-input {
+  background-color: #efefef;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  line-height: 35px;
+  font-size: 18px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+}
+
+.xdstickers .xdsticker_freeshipping {
+  color: red;
+}
+/* Product end */
+
+/* Stock start */
+
+.stock-wrap {
+  background-color: #f4f4f4;
+  padding: 92px 0;
+}
+
+.stock-row .col-sm-6:nth-child(1) a {
+  background-color: #aa5cb7;
+}
+.stock-row .col-sm-6:nth-child(2) a {
+  background-color: #71bf34;
+}
+.stock-item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 350px;
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  color: #fff;
+  z-index: 0;
+  text-align: right;
+}
+.stock-text {
+  position: relative;
+}
+
+.stock-item:hover {
+  color: #fff;
+}
+
+.stock-paws {
+  position: absolute;
+  top: 50px;
+  left: 230px;
+  z-index: -1;
+}
+
+.stock-subtitle {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.stock-title {
+  font-size: 37px;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.stock-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 5px;
+  background-color: #3f4847;
+  font-size: 18px;
+}
+.stock-image {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  left: 30px;
+}
+/* Stock end */

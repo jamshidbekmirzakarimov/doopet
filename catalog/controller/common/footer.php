@@ -27,9 +27,12 @@ class ControllerCommonFooter extends Controller {
 		$data['account'] = $this->url->link('account/account', '', true);
 		$data['order'] = $this->url->link('account/order', '', true);
 		$data['wishlist'] = $this->url->link('account/wishlist', '', true);
-		$data['newsletter'] = $this->url->link('account/newsletter', '', true);
+		// $data['newsletter'] = $this->url->link('account/newsletter', '', true); 
+		// $data['description'] = $this->document->getDescription();
 
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
+
+		
 
 		// Whos Online
 		if ($this->config->get('config_customer_online')) {

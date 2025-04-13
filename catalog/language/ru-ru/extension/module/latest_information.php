@@ -1,0 +1,16 @@
+<?php
+/**
+ * @package    OptimBlog
+ * @version    3.0.1.2
+ * @author     Dmitriy Khokhlov <admin@optimlab.com>
+ * @copyright  Copyright (c) 2018, Dmitriy Khokhlov. (http://optimlab.com/)
+ * @license    https://opensource.org/licenses/GPL-3.0
+ * @link       http://optimlab.com
+ */
+// Heading
+$_['heading_title'] = 'Новые статьи';
+
+// Text
+$_['text_read']     = 'Читать дальше ...';
+$_['text_all']     = 'Все статьи';
+$_['text_review']   = 'Отзывов (%s)';

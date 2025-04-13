@@ -38,13 +38,15 @@
             {% endif %}
           </div>
           <div class="button-group">
-            <div class="product-quant"> 
-              <span class="quant-btn quant-minus">-</span> 
-              <input type="text" name="quantity" class="quant-input" size="2" value="1" data-maximum="{{ product.quantity }}" /> 
+            <div class="product-quant">
+              <span class="quant-btn quant-minus">-</span>
+              <input type="text" name="quantity" class="quant-input" size="2" value="1"
+                data-maximum="{{ product.quantity }}" />
               <span class="quant-btn quant-plus">+</span>
             </div>
-            <button class="product-cart-add" type="button"  onclick="cart.add('{{ product.product_id }}', $(this).parent().parent().find('.quant-input').val());"> 
-              <span class="hidden-xs hidden-sm hidden-md">{{ button_cart }}</span></button>
+            <button class="product-cart-add" type="button"
+              onclick="cart.add('{{ product.product_id }}', $(this).parent().parent().find('.quant-input').val());">
+              <span>{{ button_cart }}</span></button>
           </div>
         </div>
       </div>

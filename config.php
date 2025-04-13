@@ -28,3 +28,4 @@ define('DB_PASSWORD', '');
 define('DB_DATABASE', 'doopet');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'oc_');
+error_reporting(0);

@@ -14,54 +14,70 @@
     {% set class = 'col-sm-12' %}
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
-      <h2>{{ heading_title }}</h2>
-      {% if thumb or description %}
-      <div class="row"> {% if thumb %}
-        <div class="col-sm-2"><img src="{{ thumb }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-thumbnail" /></div>
-        {% endif %}
-        {% if description %}
-        <div class="col-sm-10">{{ description }}</div>
-        {% endif %}</div>
-      <hr>
-      {% endif %}
-      {% if categories %}
-      <h3>{{ text_refine }}</h3>
-      {% if categories|length <= 5 %}
-      <div class="row">
-        <div class="col-sm-3">
-          <ul>
-            {% for category in categories %}
-            <li><a href="{{ category.href }}">{{ category.name }}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-      {% else %}
-      <div class="row">{% for category in categories|batch((categories|length / 4)|round(1, 'ceil')) %}
-        <div class="col-sm-3">
-          <ul>
-            {% for child in category %}
-            <li><a href="{{ child.href }}">{{ child.name }}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endfor %}</div>
-      <br/>
-      {% endif %}
-      {% endif %}
+
       {% if products %}
       <div class="row">
-        <div class="col-md-2 col-sm-6 hidden-xs">
-          <div class="btn-group btn-group-sm">
-            <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="{{ button_list }}"><i class="fa fa-th-list"></i></button>
-            <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="{{ button_grid }}"><i class="fa fa-th"></i></button>
+        <div class="col-sm-5">
+          <div class="btn-group btn-group-sm category-view">
+            <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip"
+              title="{{ button_list }}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <g clip-path="url(#clip0_22_8137)">
+                  <path
+                    d="M8.46157 0H0.769234C0.344385 0 0 0.344385 0 0.769234V8.46157C0 8.88642 0.344385 9.2308 0.769234 9.2308H8.46157C8.88642 9.2308 9.2308 8.88642 9.2308 8.46157V0.769234C9.2308 0.344385 8.88642 0 8.46157 0Z"
+                    fill="#CBBFBF" />
+                  <path
+                    d="M19.2309 0H11.5385C11.1137 0 10.7693 0.344385 10.7693 0.769234V8.46157C10.7693 8.88642 11.1137 9.2308 11.5385 9.2308H19.2309C19.6557 9.2308 20.0001 8.88642 20.0001 8.46157V0.769234C20.0001 0.344385 19.6557 0 19.2309 0Z"
+                    fill="#CBBFBF" />
+                  <path
+                    d="M8.46157 10.7693H0.769234C0.344385 10.7693 0 11.1136 0 11.5385V19.2308C0 19.6557 0.344385 20.0001 0.769234 20.0001H8.46157C8.88642 20.0001 9.2308 19.6557 9.2308 19.2308V11.5385C9.2308 11.1136 8.88642 10.7693 8.46157 10.7693Z"
+                    fill="#CBBFBF" />
+                  <path
+                    d="M19.2309 10.7693H11.5385C11.1137 10.7693 10.7693 11.1136 10.7693 11.5385V19.2308C10.7693 19.6557 11.1137 20.0001 11.5385 20.0001H19.2309C19.6557 20.0001 20.0001 19.6557 20.0001 19.2308V11.5385C20.0001 11.1136 19.6557 10.7693 19.2309 10.7693Z"
+                    fill="#CBBFBF" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_22_8137">
+                    <rect width="20" height="20" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+            <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip"
+              title="{{ button_grid }}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <g clip-path="url(#clip0_22_8146)">
+                  <path
+                    d="M4.16667 0H0.833333C0.373333 0 0 0.373333 0 0.833333V4.16667C0 4.62667 0.373333 5 0.833333 5H4.16667C4.62667 5 5 4.62667 5 4.16667V0.833333C5 0.373333 4.62667 0 4.16667 0Z"
+                    fill="#CBBFBF" fill-opacity="0.933333" />
+                  <path
+                    d="M19.1667 0H7.50008C7.04008 0 6.66675 0.373333 6.66675 0.833333V4.16667C6.66675 4.62667 7.04008 5 7.50008 5H19.1667C19.6267 5 20.0001 4.62667 20.0001 4.16667V0.833333C20.0001 0.373333 19.6267 0 19.1667 0Z"
+                    fill="#CBBFBF" fill-opacity="0.933333" />
+                  <path
+                    d="M4.16667 7.5H0.833333C0.373333 7.5 0 7.87333 0 8.33333V11.6667C0 12.1267 0.373333 12.5 0.833333 12.5H4.16667C4.62667 12.5 5 12.1267 5 11.6667V8.33333C5 7.87333 4.62667 7.5 4.16667 7.5Z"
+                    fill="#CBBFBF" fill-opacity="0.933333" />
+                  <path
+                    d="M19.1667 7.5H7.50008C7.04008 7.5 6.66675 7.87333 6.66675 8.33333V11.6667C6.66675 12.1267 7.04008 12.5 7.50008 12.5H19.1667C19.6267 12.5 20.0001 12.1267 20.0001 11.6667V8.33333C20.0001 7.87333 19.6267 7.5 19.1667 7.5Z"
+                    fill="#CBBFBF" fill-opacity="0.933333" />
+                  <path
+                    d="M4.16667 15H0.833333C0.373333 15 0 15.3733 0 15.8333V19.1667C0 19.6267 0.373333 20 0.833333 20H4.16667C4.62667 20 5 19.6267 5 19.1667V15.8333C5 15.3733 4.62667 15 4.16667 15Z"
+                    fill="#CBBFBF" fill-opacity="0.933333" />
+                  <path
+                    d="M19.1667 15H7.50008C7.04008 15 6.66675 15.3733 6.66675 15.8333V19.1667C6.66675 19.6267 7.04008 20 7.50008 20H19.1667C19.6267 20 20.0001 19.6267 20.0001 19.1667V15.8333C20.0001 15.3733 19.6267 15 19.1667 15Z"
+                    fill="#CBBFBF" fill-opacity="0.933333" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_22_8146">
+                    <rect width="20" height="20" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
           </div>
         </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="form-group"><a href="{{ compare }}" id="compare-total" class="btn btn-link">{{ text_compare }}</a></div>
-        </div>
-        <div class="col-md-4 col-xs-6">
-          <div class="form-group input-group input-group-sm">
+
+        <div class="col-md-4">
+          <div class="form-group input-group input-group-sm sort-wrap">
             <label class="input-group-addon" for="input-sort">{{ text_sort }}</label>
             <select id="input-sort" class="form-control" onchange="location = this.value;">
               {% for sorts in sorts %}
@@ -74,8 +90,8 @@
             </select>
           </div>
         </div>
-        <div class="col-md-3 col-xs-6">
-          <div class="form-group input-group input-group-sm">
+        <div class="col-md-3">
+          <div class="form-group input-group input-group-sm sort-wrap">
             <label class="input-group-addon" for="input-limit">{{ text_limit }}</label>
             <select id="input-limit" class="form-control" onchange="location = this.value;">
               {% for limits in limits %}
@@ -89,10 +105,11 @@
           </div>
         </div>
       </div>
-      <div class="row"> {% for product in products %}
-        <div class="product-layout product-list col-xs-12">
-          <div class="product-thumb">
-            <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
+      <div class="row category-top"> {% for product in products %}
+        <div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-12">
+          <div class="product-thumb  trasition">
+            <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}"
+                  title="{{ product.name }}" class="img-responsive" /></a></div>
             <div>
               <div class="caption">
                 <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
@@ -100,23 +117,34 @@
                 {% if product.price %}
                 <p class="price"> {% if not product.special %}
                   {{ product.price }}
-                  {% else %} <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span> {% endif %}
+                  {% else %} <span class="price-new">{{ product.special }}</span> <span class="price-old">{{
+                    product.price
+                    }}</span> {% endif %}
                   {% if product.tax %} <span class="price-tax">{{ text_tax }} {{ product.tax }}</span> {% endif %} </p>
                 {% endif %}
                 {% if product.rating %}
                 <div class="rating"> {% for i in 1..5 %}
-                  {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
-                  {% endfor %} </div>
-                {% endif %} </div>
+                  {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                    {%
+                    else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i
+                        class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
+                    {% endfor %} </div>
+                {% endif %}
+              </div>
               <div class="button-group">
-                <button type="button" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ button_cart }}</span></button>
-                <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
-                <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fa fa-exchange"></i></button>
+                <button type="button" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');"><i
+                    class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ button_cart
+                    }}</span></button>
+                <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}"
+                  onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
+                <button type="button" data-toggle="tooltip" title="{{ button_compare }}"
+                  onclick="compare.add('{{ product.product_id }}');"><i class="fa fa-exchange"></i></button>
               </div>
             </div>
           </div>
         </div>
-        {% endfor %} </div>
+        {% endfor %}
+      </div>
       <div class="row">
         <div class="col-sm-6 text-left">{{ pagination }}</div>
         <div class="col-sm-6 text-right">{{ results }}</div>
@@ -128,7 +156,9 @@
         <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
       </div>
       {% endif %}
-      {{ content_bottom }}</div>
-    {{ column_right }}</div>
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
 </div>
-{{ footer }} 
+{{ footer }}

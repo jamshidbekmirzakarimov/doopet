@@ -14,5 +14,13 @@ jQuery(document).ready(function() {
             return false;
         }
     });
+
+    var mobile = $('.header-mobile') 
+    $('.hamburger').on('click', function () {
+       mobile.addClass('is-active');
+    });
+    $('.header-mobile-close').on('click', function () {
+        mobile.removeClass('is-active');
+     });
 });
     

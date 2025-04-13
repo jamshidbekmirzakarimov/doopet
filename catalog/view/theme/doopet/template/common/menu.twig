@@ -5,19 +5,19 @@
     {% if category.children %}
     <li class="has-sub"><a href="{{ category.href }}">{{ category.name
         }}</a>
-        <ul class="sub-category">
-      {% for children in category.children|batch(category.children|length /
-      category.column|round(1, 'ceil')) %}
+      <ul class="sub-category">
+        {% for children in category.children|batch(category.children|length /
+        category.column|round(1, 'ceil')) %}
         {% for child in children %}
         <li><a href="{{ child.href }}">{{ child.name }}</a></li>
         {% endfor %}
         {% endfor %}
       </ul>
-      </li>
+    </li>
     {% else %}
     <li><a href="{{ category.href }}">{{ category.name }}</a></li>
     {% endif %}
-    {% endfor %}
+    {% endfor %}  
   </ul>
 
 </nav>

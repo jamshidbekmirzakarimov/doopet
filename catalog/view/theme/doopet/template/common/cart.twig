@@ -3,9 +3,9 @@
     class="btn btn-inverse btn-block btn-lg dropdown-toggle">
     <span>
       <img src="catalog/view/theme/doopet/image/cart.svg" alt="cart">
-    </span> 
+    </span>
     <span id="cart-total">{{ text_items }}</span></button>
-  <ul class="dropdown-menu pull-right">
+  <ul class="dropdown-menu pull-right dropdown-cart">
     {% if products or vouchers %}
     <li>
       <table class="table table-striped">
@@ -13,16 +13,35 @@
         <tr>
           <td class="text-center">{% if product.thumb %} <a href="{{ product.href }}"><img src="{{ product.thumb }}"
                 alt="{{ product.name }}" title="{{ product.name }}" class="img-thumbnail" /></a> {% endif %}</td>
-          <td class="text-left"><a href="{{ product.href }}">{{ product.name }}</a> {% if product.option %}
+          <td class="text-left cart-product-name"><a href="{{ product.href }}">{{ product.name }}</a> {% if
+            product.option %}
             {% for option in product.option %} <br />
             - <small>{{ option.name }} {{ option.value }}</small> {% endfor %}
             {% endif %}
             {% if product.recurring %} <br />
             - <small>{{ text_recurring }} {{ product.recurring }}</small> {% endif %}</td>
-          <td class="text-right">x {{ product.quantity }}</td>
+          <td class="text-right cart-product-quant">x {{ product.quantity }}</td>
           <td class="text-right">{{ product.total }}</td>
-          <td class="text-center"><button type="button" onclick="cart.remove('{{ product.cart_id }}');"
-              title="{{ button_remove }}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button></td>
+          <td class="text-center">
+            <button type="button" onclick="cart.remove('{{ product.cart_id }}');" title="{{ button_remove }}"
+              class="btn btn-danger btn-xs cart-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="none">
+                <g clip-path="url(#clip0_368_3267)">
+                  <path
+                    d="M10.8763 3.70959H3.12342C2.8888 3.70959 2.69861 3.89977 2.69861 4.13436V10.7703C2.69861 11.8982 3.61628 12.8158 4.74412 12.8158H9.25545C10.3833 12.8158 11.301 11.8982 11.301 10.7703V4.13436C11.301 3.89979 11.1109 3.70959 10.8763 3.70959ZM5.97867 10.2574C5.97867 10.5456 5.74503 10.7792 5.45677 10.7792C5.16862 10.7792 4.93487 10.5456 4.93487 10.2574V6.26803C4.93487 5.97979 5.16858 5.74617 5.45677 5.74617C5.74501 5.74617 5.97867 5.97981 5.97867 6.26803V10.2574ZM9.06476 10.2574C9.06476 10.5456 8.83112 10.7792 8.54286 10.7792C8.25471 10.7792 8.02096 10.5456 8.02096 10.2574V6.26803C8.02096 5.97979 8.25467 5.74617 8.54286 5.74617C8.8311 5.74617 9.06476 5.97981 9.06476 6.26803V10.2574Z"
+                    fill="white" />
+                  <path
+                    d="M10.4506 0.845148H8.60016V0.684673C8.60016 0.408719 8.3757 0.184219 8.09977 0.184219H5.89975C5.62379 0.184219 5.39929 0.408719 5.39929 0.684673V0.845148H3.54885C2.84029 0.845148 2.26379 1.4216 2.26379 2.13018V2.95421C2.26379 3.10158 2.38326 3.22106 2.53069 3.22106H11.4689C11.6162 3.22106 11.7357 3.10158 11.7357 2.95421V2.13018C11.7357 1.42162 11.1592 0.845148 10.4506 0.845148Z"
+                    fill="white" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_368_3267">
+                    <rect width="12.6316" height="12.6316" fill="white" transform="translate(0.684204 0.184219)" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+          </td>
         </tr>
         {% endfor %}
         {% for voucher in vouchers %}
@@ -39,21 +58,22 @@
     </li>
     <li>
       <div>
-        <table class="table table-bordered">
+        <table class="table  cart-total">
           {% for total in totals %}
           <tr>
-            <td class="text-right"><strong>{{ total.title }}</strong></td>
+            <td class="text-right cart-total-title"><strong>{{ total.title }}</strong></td>
             <td class="text-right">{{ total.text }}</td>
           </tr>
           {% endfor %}
         </table>
-        <p class="text-right"><a href="{{ cart }}"><strong><i class="fa fa-shopping-cart"></i> {{ text_cart
-              }}</strong></a>&nbsp;&nbsp;&nbsp;<a href="{{ checkout }}"><strong><i class="fa fa-share"></i> {{
-              text_checkout }}</strong></a></p>
+        <div class="cart-button-wrap">
+          <a href="{{ cart }}"><i class="fa fa-shopping-cart"></i> {{ text_cart }}</a>
+            <a href="{{ checkout }}"><i class="fa fa-share"></i> {{
+            text_checkout }}</a></div>
       </div>
     </li>
     {% else %}
-    <li>
+    <li class="cart-empty">
       <p class="text-center">{{ text_empty }}</p>
     </li>
     {% endif %}

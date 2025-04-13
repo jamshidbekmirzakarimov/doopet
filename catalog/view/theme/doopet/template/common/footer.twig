@@ -1,45 +1,67 @@
-<footer>
+<footer class="site-footer">
   <div class="container">
     <div class="row">
+      <div class="col-md-4">
+        <div id="footer-logo">
+          {% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}"
+              class="img-responsive" /></a>{% else %}
+          <h1>
+            <a href="{{ home }}">{{ name }}</a>
+          </h1>
+          {% endif %}
+        </div>
+
+        <div class="footer-desc">{{ description }}</div>
+      </div>
+
+      <div class="col-md-2 col-sm-3">
+        <div class="footer-menu">
+          {{menu_footer}}
+        </div>
+      </div>
+
       {% if informations %}
-      <div class="col-sm-3">
-        <h5>{{ text_information }}</h5>
-        <ul class="list-unstyled">
-          {% for information in informations %}
-          <li><a href="{{ information.href }}">{{ information.title }}</a></li>
-          {% endfor %}
-        </ul>
+      <div class="col-md-3 col-sm-3">
+        <nav class="footer-menu footer-information">
+          <h5>{{ text_information }}</h5>
+          <ul class="list-unstyled">
+            {% for information in informations %}
+            <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="footer-menu footer-contacts">
+          <h5>
+            {{text_contacts}}
+          </h5>
+          <ul>
+            <li>
+              <span class="icon-box">
+                <i class="fa fa-location-arrow"></i>
+              </span>
+              <span> {{ address }}</span>
+            </li>
+            <li>
+              <a href="mailto:{{ email }}">
+                <span class="icon-box"><i class="fa fa-envelope"></i></span>
+                <span>{{ email }}</span></a>
+            </li>
+            <li>
+              <a href="{{ contact }}">
+                <span class="icon-box"><i class="fa fa-phone"></i></span>
+                <span>{{ telephone }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <ul class="footer-social"></ul>
       </div>
       {% endif %}
-      <div class="col-sm-3">
-        <h5>{{ text_service }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ contact }}">{{ text_contact }}</a></li>
-          <li><a href="{{ return }}">{{ text_return }}</a></li>
-          <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
-        </ul>
-      </div>
-      <div class="col-sm-3">
-        <h5>{{ text_extra }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
-          <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
-          <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
-          <li><a href="{{ special }}">{{ text_special }}</a></li>
-        </ul>
-      </div>
-      <div class="col-sm-3">
-        <h5>{{ text_account }}</h5>
-        <ul class="list-unstyled">
-          <li><a href="{{ account }}">{{ text_account }}</a></li>
-          <li><a href="{{ order }}">{{ text_order }}</a></li>
-          <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
-          <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
-        </ul>
-      </div>
+
     </div>
-    <hr>
-    <p>{{ powered }}</p>
   </div>
 </footer>
 {% for style in styles %}
