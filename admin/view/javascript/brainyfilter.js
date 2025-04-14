@@ -80,7 +80,7 @@
             });
             this.$elem.find('.tabs').each(function(){
                 var $tabs = $(this).find('.tab').not('.hidden');
-                if (!$tabs.filter('.selected').length) $tabs.first().addClass('selected');
+                if (!$tabs.filter('.selected').size()) $tabs.first().addClass('selected');
             });
             this.$elem.find('.tab.selected').each(function() {
                 $($(this).data('target')).show();
@@ -452,7 +452,7 @@
         hideEmptyTables : function($tbl) {
             $tbl = $tbl || this.$elem.find('.bf-hide-if-empty');
             $tbl.each(function(){
-                var isEmpty = !$(this).find('tbody').children().length;
+                var isEmpty = !$(this).find('tbody').children().size();
                 $(this).toggleClass('hidden', isEmpty);
                 if (isEmpty) {
                     $(this).after('<div class="alert alert-info">' + BF.lang.empty_table + '</div>');
@@ -466,7 +466,7 @@
             var settings = this._convertToFormNames(settingsObj);
             for (var name in settings) {
                 var field = form.find('[name="bf'+name+'"]');
-                if (field.length()) {
+                if (field.size()) {
                     var type = field.eq(0).attr('type') ? field.eq(0).attr('type').toLowerCase() : '';
                     var tag  = field.eq(0).prop('tagName').toLowerCase();
                     if (type === 'text' || type === 'hidden' || tag === 'select') {
@@ -576,7 +576,7 @@
             $('.warning, .success').remove();
             var success = true,
                 layoutSelected = ~~this.$elem.find('.bf-layout-select').val(),
-                isInstance = this.$elem.find('.bf-layout-select').length;
+                isInstance = this.$elem.find('.bf-layout-select').size();
                 
             if (!layoutSelected && isInstance) {
                 success = false;

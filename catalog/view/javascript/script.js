@@ -1,19 +1,21 @@
 jQuery(document).ready(function() {
-    $('body').on('click', '.quant-btn', function () {
-        var $input = $(this).parent().find('input');
-        if ($(this).hasClass('quant-plus')) {
-            $input.val(parseInt($input.val()) + 1);
-            $input.change();
-            return false;
-        }
-        else {
-            var count = parseInt($input.val()) - 1;
-            count = count < 1 ? 1 : count;
-            $input.val(count);
-            $input.change();
-            return false;
-        }
-    });
+// Уменьшение количества
+$('.quant-minus').click(function() {
+	var $input = $(this).siblings('.quant-input');
+	var value = parseInt($input.val());
+	if (value > 1) {
+		value--;
+		$input.val(value);
+	}
+});
+
+// Увеличение количества
+$('.quant-plus').click(function() {
+	var $input = $(this).siblings('.quant-input');
+	var value = parseInt($input.val());
+	value++;
+	$input.val(value);
+});
 
     var mobile = $('.header-mobile') 
     $('.hamburger').on('click', function () {

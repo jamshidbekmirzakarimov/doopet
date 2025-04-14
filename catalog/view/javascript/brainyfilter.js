@@ -44,8 +44,8 @@ if (typeof BrainyFilter === 'undefined') {
 
         init: function() {
             this.isInitialized = true;
-            this.ajaxEnabled = !isIE() && $(this.selectors.container)length 
-                                       && $(this.selectors.paginator)length;
+            this.ajaxEnabled = !isIE() && $(this.selectors.container).size() 
+                                       && $(this.selectors.paginator).size();
             this.redirectTo = this.redirectTo.replace('&amp;', '&');
 
             $(this.sliderId).each(function(){
@@ -114,7 +114,7 @@ if (typeof BrainyFilter === 'undefined') {
             });
 
             $(this.filterFormId).find('input[type="checkbox"], input[type="radio"]').change(function(){
-                if (!$(this).closest('.bf-attr-filter').find('.bf-count')length) {
+                if (!$(this).closest('.bf-attr-filter').find('.bf-count').size()) {
                     BrainyFilter.addCross($(this));
                 }
             });
@@ -369,7 +369,7 @@ if (typeof BrainyFilter === 'undefined') {
                         });
                         var newUrl   = window.location.origin + BrainyFilter.prepareFilterData(true, false);
 
-                        if ($(BrainyFilter.sliderId)length) {
+                        if ($(BrainyFilter.sliderId).size()) {
                             BrainyFilter.changePriceSlider(res.min, res.max);
                         };
                         
@@ -404,7 +404,7 @@ if (typeof BrainyFilter === 'undefined') {
                 $emptyMsg = $('<p/>', {'class': 'bf-empty-product-list-msg'}).html(bfLang.empty_list)
                 ;
 
-            if ($prodContlength) {
+            if ($prodCont.size()) {
                 $(BrainyFilter.selectors.container).html($prodCont.html());
                 $(BrainyFilter.selectors.paginator).html($paginCont.html());
             } else {
@@ -618,7 +618,7 @@ if (typeof BrainyFilter === 'undefined') {
         },
 
         serializeMultipleForms : function() {
-            if ($(this.filterFormId)length === 1) {
+            if ($(this.filterFormId).size() === 1) {
                 return $(this.filterFormId).serialize();
             }
             var params = $(this.filterFormId).serializeArray();
@@ -640,16 +640,16 @@ if (typeof BrainyFilter === 'undefined') {
 
         serializeSearchForm : function() {
             var $search = $('#content').find('[name=search]');
-            if ($searchlength && $search.val() !== '') {
+            if ($search.size() && $search.val() !== '') {
                 var str = 'search=' + encodeURIComponent($search.val());
                 var cat = $('#content').find('[name=category_id]').val();
                 if (parseInt(cat) > 0) {
                     str += '&category_id=' + cat;
                 }
-                if ($('#content').find('[name=sub_category]:checked')length) {
+                if ($('#content').find('[name=sub_category]:checked').size()) {
                     str += '&sub_category=true';
                 }
-                if ($('#content').find('[name=description]:checked')length) {
+                if ($('#content').find('[name=description]:checked').size()) {
                     str += '&description=true';
                 }
                 return str;
@@ -734,7 +734,7 @@ if (typeof BrainyFilter === 'undefined') {
             });
             // disable select box if it hasn't any active option
             $form.find('select').each(function(){
-                if ($(this).find('option').not('.bf-default,[disabled]')length === 0) {
+                if ($(this).find('option').not('.bf-default,[disabled]').size() === 0) {
                     $(this).attr('disabled', 'true');
                 }
             });
@@ -972,7 +972,7 @@ if (typeof BrainyFilter === 'undefined') {
                         firstInit = true;
                     }
                     if (enableSliding) {
-                        var count = $this.find('.bf-attr-filter').filter(':visible')length - visibleItems;
+                        var count = $this.find('.bf-attr-filter').filter(':visible').size() - visibleItems;
                         if ( count > 0 && count >= hideItems) {
                             if ($this.parent().hasClass('bf-expanded') && !firstInit) {
                                 BrainyFilter.expandBlock(v);
@@ -1014,7 +1014,7 @@ if (typeof BrainyFilter === 'undefined') {
             }
             var $form = $(block).closest(BrainyFilter.filterFormId);
             var visibleItems = parseInt($form.data('visible-items'));
-            var count   = $(block).find('.bf-attr-filter').filter(':visible')length - visibleItems;
+            var count   = $(block).find('.bf-attr-filter').filter(':visible').size() - visibleItems;
             var height  = 0;
             var wrapper = $(block).closest('.bf-sliding-cont');
             var showMore = wrapper.find('.bf-sliding-show').addClass('bf-hidden');
@@ -1024,7 +1024,7 @@ if (typeof BrainyFilter === 'undefined') {
                         height += $(vv).height();
                     }
                 });
-                if (!showMorelength) {
+                if (!showMore.size()) {
                     wrapper.append('<div class="bf-sliding-show" ></div>'); 
                 }
                 wrapper.find('.bf-sliding-show')
@@ -1090,7 +1090,7 @@ if (typeof BrainyFilter === 'undefined') {
             $('.bf-attr-block').each(function(){
                 var $this = $(this);
                 $this.removeClass('bf-hidden');
-                if ($this.find('.bf-attr-filter').filter(':visible')length) {
+                if ($this.find('.bf-attr-filter').filter(':visible').size()) {
                     $this.removeClass('bf-hidden');
                 } else {
                     $this.addClass('bf-hidden');
@@ -1099,8 +1099,8 @@ if (typeof BrainyFilter === 'undefined') {
             $('.bf-attr-group-header').each(function(){
                 var $this = $(this);
                 $this.removeClass('bf-hidden');
-                if ($this.nextUntil('.bf-attr-group-header', '.bf-attr-block').filter(':visible')length
-                        || $this.next('.bf-attr-block-wrapper').find('.bf-attr-filter').filter(':visible')length) {
+                if ($this.nextUntil('.bf-attr-group-header', '.bf-attr-block').filter(':visible').size()
+                        || $this.next('.bf-attr-block-wrapper').find('.bf-attr-filter').filter(':visible').size()) {
                     $this.removeClass('bf-hidden');
                 } else {
                     $this.addClass('bf-hidden');
@@ -1169,7 +1169,7 @@ if (typeof BrainyFilter === 'undefined') {
             };
             var letBodyScroll = function() {
                 var $body = $('body.bf-non-scrollable');
-                if ($bodylength) {
+                if ($body.size()) {
                     $body.removeClass('bf-non-scrollable');
                     $(document).scrollTop(-parseInt($body.css('top')));
                     $(document).scrollLeft(-parseInt($body.css('left')));
@@ -1177,7 +1177,7 @@ if (typeof BrainyFilter === 'undefined') {
                 }
             };
             
-            if ($layoutlength) {
+            if ($layout.size()) {
                 $layout.before('<div id="bf-brainyfilter-anchor"></div>');
 //                $form = $layout.find(BrainyFilter.filterFormId);
                 curSubmitType = $form.data('submit-type');
